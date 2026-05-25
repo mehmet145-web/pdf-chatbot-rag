@@ -67,9 +67,6 @@ Answer Generation
 
 ## Chat Interface
 
-Add screenshots here.
-
-```md
 ![App Screenshot](screenshots/app-demo.png)
 ```
 
