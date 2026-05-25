@@ -1,0 +1,26 @@
+print("Kod çalıştı")
+
+
+from langchain_community.document_loaders import PyPDFLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+
+def load_and_split_pdf(pdf_path: str):
+    loader = PyPDFLoader(pdf_path)
+    documents = loader.load()
+
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1000,
+        chunk_overlap=200
+    )
+
+    chunks = splitter.split_documents(documents)
+    return chunks
+
+
+if __name__ == "__main__":
+    chunks = load_and_split_pdf("data/sample.pdf")
+
+    print(f"Toplam chunk sayısı: {len(chunks)}")
+    print("\nİlk chunk:\n")
+    print(chunks[0].page_content[:500])
